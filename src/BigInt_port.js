@@ -1662,27 +1662,15 @@ var x = {};
 	};
 
 	window.equalsInt = function(bigInt, number){
-		if (bigInt.compare(x.BigInteger(number)) === 0) {
-			return 1;
-		} else {
-			return 0;
-		}
+		return bigInt.compare(x.BigInteger(number)) === 0 ? 1 : 0;
 	};
 
 	window.equals = function(bigInt, bigInt2){
-		if (bigInt.compare(bigInt2) === 0) {
-			return 1;
-		} else {
-			return 0;
-		}
+		return bigInt.compare(bigInt2) === 0 ? 1 : 0;
 	};
 
 	window.isZero = function(bigInt){
-		if (bigInt.isZero()) {
-			return 1;
-		} else {
-			return 0;
-		}
+		return bigInt.isZero() ? 1 : 0;
 	};
 
 	window.add = function(bigInt, bigInt2){
@@ -1699,6 +1687,18 @@ var x = {};
 
 	window.powMod = function(bigInt, e, m){
 		return bigInt.modPow(e,m);
+	};
+
+	window.mod = function(bigInt, bigInt2){
+		var remainder = bigInt.remainder(bigInt2);
+		while (remainder.isNegative()) {
+			remainder = remainder.add(bigInt2);
+		}
+		return remainder;
+	};
+
+	window.negative = function(bigInt, bigInt2){
+		return bigInt.isNegative() ? 1 : 0;
 	};
 })(window);
 

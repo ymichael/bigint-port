@@ -166,5 +166,33 @@ describe("BigInt Port", function() {
     });
   });
 
+  describe("Other Operations", function(){
+    describe("mod", function(){
+      it("should modulo two bigInts", function(){
+        var x = int2bigInt(1234,10,10);
+        var testmod = function(){
+          return mod(x,x);
+        };
+        expect(testmod).not.toThrow();
+      });
+      it("should mod two bigInts correctly", function(){
+
+      });
+    });
+
+    describe("negative", function(){
+      it("should check if negative ", function(){
+        var x = int2bigInt(1234,10,10);
+        var testneg = function(){
+          return negative(x);
+        };
+        expect(testneg).not.toThrow();
+      });
+      it("should check negative correctly", function(){
+
+      });
+    });
+  });
+
 
 });
