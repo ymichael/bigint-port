@@ -1,4 +1,4 @@
-(function(window){
+(function(exports){
 /*
 	JavaScript BigInteger library version 0.9
 	http://silentmatt.com/biginteger/
@@ -1649,47 +1649,47 @@ var x = {};
 		to follow method signatures of BigInt.js
 	*/
 
-	window.int2bigInt = function(number){
+	exports.int2bigInt = function(number){
 		return x.BigInteger(number);
 	};
 
-	window.str2bigInt = function(str, base){
+	exports.str2bigInt = function(str, base){
 		return x.BigInteger.parse(str, base);
 	};
 
-	window.bigInt2str = function(bigInt, base){
+	exports.bigInt2str = function(bigInt, base){
 		return bigInt.toString(base);
 	};
 
-	window.equalsInt = function(bigInt, number){
+	exports.equalsInt = function(bigInt, number){
 		return bigInt.compare(x.BigInteger(number)) === 0 ? 1 : 0;
 	};
 
-	window.equals = function(bigInt, bigInt2){
+	exports.equals = function(bigInt, bigInt2){
 		return bigInt.compare(bigInt2) === 0 ? 1 : 0;
 	};
 
-	window.isZero = function(bigInt){
+	exports.isZero = function(bigInt){
 		return bigInt.isZero() ? 1 : 0;
 	};
 
-	window.add = function(bigInt, bigInt2){
+	exports.add = function(bigInt, bigInt2){
 		return bigInt.add(bigInt2);
 	};
 
-	window.sub = function(bigInt, bigInt2){
+	exports.sub = function(bigInt, bigInt2){
 		return bigInt.subtract(bigInt2);
 	};
 
-	window.mult = function(bigInt, bigInt2){
+	exports.mult = function(bigInt, bigInt2){
 		return bigInt.multiply(bigInt2);
 	};
 
-	window.powMod = function(bigInt, e, m){
+	exports.powMod = function(bigInt, e, m){
 		return bigInt.modPow(e,m);
 	};
 
-	window.mod = function(bigInt, bigInt2){
+	exports.mod = function(bigInt, bigInt2){
 		var remainder = bigInt.remainder(bigInt2);
 		while (remainder.isNegative()) {
 			remainder = remainder.add(bigInt2);
@@ -1697,7 +1697,7 @@ var x = {};
 		return remainder;
 	};
 
-	window.negative = function(bigInt, bigInt2){
+	exports.negative = function(bigInt, bigInt2){
 		return bigInt.isNegative() ? 1 : 0;
 	};
 })(window);

@@ -125,7 +125,9 @@ describe("BigInt Port", function() {
         expect(testadd).not.toThrow();
       });
       it("should add two bigInts correctly", function(){
-
+        var x = int2bigInt(1234,10,10);
+        var y = int2bigInt(1234567,10,10);
+        expect(equals(int2bigInt(1235801), add(x,y))).toBe(1);
       });
     });
     describe("sub", function(){
@@ -137,10 +139,14 @@ describe("BigInt Port", function() {
         expect(testsub).not.toThrow();
       });
       it("should subtract two bigInts correctly", function(){
-
+        var x = int2bigInt(1234,10,10);
+        var y = int2bigInt(1234567,10,10);
+        expect(equals(int2bigInt(1233333), sub(y,x))).toBe(1);
       });
       it("should handle negative results", function(){
-
+        var x = int2bigInt(1234,10,10);
+        var y = int2bigInt(1234567,10,10);
+        expect(equals(int2bigInt(-1233333), sub(x,y))).toBe(1);
       });
     });
     describe("mult", function(){
@@ -152,7 +158,9 @@ describe("BigInt Port", function() {
         expect(testmult).not.toThrow();
       });
       it("should mult two bigInts correctly", function(){
-
+        var x = int2bigInt(1234,10,10);
+        var y = int2bigInt(1234567,10,10);
+        expect(equals(int2bigInt(1523455678), mult(x,y))).toBe(1);
       });
     });
     describe("powMod", function(){
@@ -161,7 +169,12 @@ describe("BigInt Port", function() {
         var testpowmod = function(){
           return powMod(x,x,x);
         };
-        expect(testpowmod).not.toThrow();
+      });
+      it("should powMod correctly", function(){
+        var x = int2bigInt(1234,10,10);
+        var y = int2bigInt(12345,10,10);
+        var z = int2bigInt(123456,10,10);
+        expect(equals(int2bigInt(40960), powMod(x,y,z))).toBe(1);
       });
     });
   });
@@ -193,6 +206,4 @@ describe("BigInt Port", function() {
       });
     });
   });
-
-
 });
