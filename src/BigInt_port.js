@@ -1730,6 +1730,14 @@ var x = {};
 		return add(bigInt, int2bigInt(number));
 	};
 
+	exports.greater = function(bigInt1, bigInt2){
+		if (bigInt1.compare(bigInt2) === 1) {
+			return 1;
+		} else {
+			return 0;
+		}
+	};
+
 	exports.GCD = function(bigInt1, bigInt2){
 		if (isZero(bigInt2)) {
 			return bigInt1;

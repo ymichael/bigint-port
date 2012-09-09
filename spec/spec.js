@@ -271,5 +271,22 @@ describe("BigInt Port", function() {
       });
     });
 
+    describe("greater", function(){
+      it("should compare two bigInts ", function(){
+        var x = int2bigInt(1234,10,10);
+        var test = function(){
+          return greater(x, x);
+        };
+        expect(test).not.toThrow();
+      });
+      it("should compare 2 bigInts correctly", function(){
+        var x = int2bigInt(123);
+        var y = int2bigInt(12334);
+        expect(greater(x, y)).toEqual(0);
+        expect(greater(y, x)).toEqual(1);
+      });
+    });
+
+
   });
 });

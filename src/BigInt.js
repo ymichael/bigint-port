@@ -68,52 +68,17 @@
 // Those returning boolean or int will not allocate memory except possibly on the first 
 // time they're called with a given parameter size.
 // 
-// int     bitSize(x)             //return how many bits long the bigInt x is, not counting leading zeros
-// bigInt  dup(x)                 //return a copy of bigInt x
-// bigInt  expand(x,n)            //return a copy of x with at least n elements, adding leading zeros if needed
 // boolean greater(x,y)           //is x>y?  (x and y are nonnegative bigInts)
-// boolean greaterShift(x,y,shift)//is (x <<(shift*bpe)) > y?
-// bigInt  inverseMod(x,n)        //return (x**(-1) mod n) for bigInts x and n.  If no inverse exists, it returns null
-// int     inverseModInt(x,n)     //return x**(-1) mod n, for integers x and n.  Return 0 if there is no inverse
-// boolean millerRabin(x,b)       //does one round of Miller-Rabin base integer b say that bigInt x is possibly prime? (b is bigInt, 1<b<x)
-// boolean millerRabinInt(x,b)    //does one round of Miller-Rabin base integer b say that bigInt x is possibly prime? (b is int,    1<b<x)
-// bigInt  multMod(x,y,n)         //return (x*y mod n) for bigInts x,y,n.  For greater speed, let y<x.
-// bigInt  randBigInt(n,s)        //return an n-bit random BigInt (n>=1).  If s=1, then the most significant of those n bits is set to 1.
-// bigInt  randTruePrime(k)       //return a new, random, k-bit, true prime bigInt using Maurer's algorithm.
-// bigInt  randProbPrime(k)       //return a new, random, k-bit, probable prime bigInt (probability it's composite less than 2^-80).
-// bigInt  str2bigInt(s,b,n,m)    //return a bigInt for number represented in string s in base b with at least n bits and m array elements
-// bigInt  trim(x,k)              //return a copy of x with exactly k leading zero elements
 //
 //
 // The following functions each have a non-underscored version, which most users should call instead.
 // These functions each write to a single parameter, and the caller is responsible for ensuring the array 
 // passed in is large enough to hold the result. 
 //
-// void    addInt_(x,n)          //do x=x+n where x is a bigInt and n is an integer
-// void    add_(x,y)             //do x=x+y for bigInts x and y
-// void    copy_(x,y)            //do x=y on bigInts x and y
-// void    copyInt_(x,n)         //do x=n on bigInt x and integer n
-// void    GCD_(x,y)             //set x to the greatest common divisor of bigInts x and y, (y is destroyed).  (This never overflows its array).
-// boolean inverseMod_(x,n)      //do x=x**(-1) mod n, for bigInts x and n. Returns 1 (0) if inverse does (doesn't) exist
-// void    mod_(x,n)             //do x=x mod n for bigInts x and n. (This never overflows its array).
-// void    mult_(x,y)            //do x=x*y for bigInts x and y.
-// void    multMod_(x,y,n)       //do x=x*y  mod n for bigInts x,y,n.
-// void    powMod_(x,y,n)        //do x=x**y mod n, where x,y,n are bigInts (n is odd) and ** is exponentiation.  0**0=1.
-// void    randBigInt_(b,n,s)    //do b = an n-bit random BigInt. if s=1, then nth bit (most significant bit) is set to 1. n>=1.
-// void    randTruePrime_(ans,k) //do ans = a random k-bit true random prime (not just probable prime) with 1 in the msb.
-// void    sub_(x,y)             //do x=x-y for bigInts x and y. Negative answers will be 2s complement.
-//
 // The following functions do NOT have a non-underscored version. 
 // They each write a bigInt result to one or more parameters.  The caller is responsible for
 // ensuring the arrays passed in are large enough to hold the results. 
 //
-// void addShift_(x,y,ys)       //do x=x+(y<<(ys*bpe))
-// void carry_(x)               //do carries and borrows so each element of the bigInt x fits in bpe bits.
-// void divide_(x,y,q,r)        //divide x by y giving quotient q and remainder r
-// int  divInt_(x,n)            //do x=floor(x/n) for bigInt x and integer n, and return the remainder. (This never overflows its array).
-// int  eGCD_(x,y,d,a,b)        //sets a,b,d to positive bigInts such that d = GCD_(x,y) = a*x-b*y
-// void halve_(x)               //do x=floor(|x|/2)*sgn(x) for bigInt x in 2's complement.  (This never overflows its array).
-// void leftShift_(x,n)         //left shift bigInt x by n bits.  n<bpe.
 // void linComb_(x,y,a,b)       //do x=a*x+b*y for bigInts x and y and integers a and b
 // void linCombShift_(x,y,b,ys) //do x=x+b*(y<<(ys*bpe)) for bigInts x and y, and integers b and ys
 // void mont_(x,y,n,np)         //Montgomery multiplication (see comments where the function is defined)
