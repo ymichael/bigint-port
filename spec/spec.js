@@ -189,7 +189,24 @@ describe("BigInt Port", function() {
         expect(testmod).not.toThrow();
       });
       it("should mod two bigInts correctly", function(){
+        var x = int2bigInt(12341231,10,10);
+        var y = int2bigInt(123456,10,10);
+        expect(mod(x, y)).toEqual(int2bigInt(119087));
+      });
+    });
 
+    describe("modInt", function(){
+      it("should modulo a bigInt and a JS-Num", function(){
+        var x = int2bigInt(1234,10,10);
+        var testmod = function(){
+          return modInt(x,123);
+        };
+        expect(testmod).not.toThrow();
+      });
+      it("should modInt correctly", function(){
+        var x = int2bigInt(12341231,10,10);
+        var y = 123456;
+        expect(modInt(x, y)).toEqual(int2bigInt(119087));
       });
     });
 
@@ -202,8 +219,57 @@ describe("BigInt Port", function() {
         expect(testneg).not.toThrow();
       });
       it("should check negative correctly", function(){
+        var x = int2bigInt(1234,10,10);
+        expect(negative(x)).toEqual(0);
 
+        var y = int2bigInt(-1234,10,10);
+        expect(negative(y)).toEqual(1);
       });
     });
+
+    describe("findPrimes", function(){
+      it("should return an array or all primes less than n", function(){
+        var x = 1234;
+        var testfindprimes = function(){
+          return findPrimes(x);
+        };
+        expect(testfindprimes).not.toThrow();
+      });
+      it("should find primes correctly", function(){
+          var primes = findPrimes(10);
+          expect(primes).toEqual([2,3,5,7]);
+      });
+    });
+
+    describe("addInt", function(){
+      it("should add a bigInt to a JS-Num ", function(){
+        var x = int2bigInt(1234,10,10);
+        var test = function(){
+          return addInt(x, 1234);
+        };
+        expect(test).not.toThrow();
+      });
+      it("should addInt correctly", function(){
+          var x = int2bigInt(1234,10,10);
+          expect(addInt(x, 1234)).toEqual(int2bigInt(2468));
+      });
+    });
+
+    describe("GCD", function(){
+      it("should calculate GDC of two bigInts ", function(){
+        var x = int2bigInt(1234,10,10);
+        var test = function(){
+          return GCD(x, x);
+        };
+        expect(test).not.toThrow();
+      });
+      it("should calculate GCD correctly", function(){
+        var x = int2bigInt(123);
+        var y = int2bigInt(12334);
+
+        expect(GCD(x, y)).toEqual(int2bigInt(1));
+      });
+    });
+
   });
 });

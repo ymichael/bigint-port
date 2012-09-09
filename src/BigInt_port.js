@@ -1697,8 +1697,45 @@ var x = {};
 		return remainder;
 	};
 
+	exports.modInt = function(bigInt, number){
+		return mod(bigInt, int2bigInt(number));
+	};
+
 	exports.negative = function(bigInt, bigInt2){
 		return bigInt.isNegative() ? 1 : 0;
+	};
+
+	exports.findPrimes = function(number){
+		var primes = [];
+
+		var isprime = function(number){
+			for (var i = 0; i < primes.length; i++) {
+				if (number % primes[i] === 0) {
+					return false;
+				}
+			}
+			return true;
+		};
+
+		for (var i = 2; i < number; i++) {
+			if (isprime(i)) {
+				primes.push(i);
+			}
+		}
+
+		return primes;
+	};
+
+	exports.addInt = function(bigInt, number){
+		return add(bigInt, int2bigInt(number));
+	};
+
+	exports.GCD = function(bigInt1, bigInt2){
+		if (isZero(bigInt2)) {
+			return bigInt1;
+		} else {
+			return GCD(bigInt2, mod(bigInt1, bigInt2));
+		}
 	};
 })(window);
 
